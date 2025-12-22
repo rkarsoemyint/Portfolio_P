@@ -1,0 +1,76 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5 py-5" data-aos="fade-up">
+    <div class="row g-5 align-items-center">
+        <div class="col-lg-5 text-center">
+            <div class="about-img-frame mb-4">
+                <img src="{% static 'images/logo.png' %}" class="img-fluid rounded shadow-lg profile-about-img" alt="Thant Zin Oo">
+            </div>
+            <div class="p-4 rounded contact-card shadow-sm">
+                <h4 class="fw-bold text-primary mb-3">Personal Details</h4>
+                <table class="table table-sm text-start opacity-75">
+                    <tr><td><strong>DOB:</strong></td><td>12 July 1990</td></tr>
+                    <tr><td><strong>NRC:</strong></td><td>9/A Ma Ra(N)137357</td></tr>
+                    <tr><td><strong>Religion:</strong></td><td>Buddhist</td></tr>
+                    <tr><td><strong>Marital Status:</strong></td><td>Single</td></tr>
+                    <tr><td><strong>Nationality:</strong></td><td>Myanmar</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-lg-7">
+            <h6 class="text-primary fw-bold text-uppercase mb-2">My Journey</h6>
+            <h2 class="display-5 fw-bold mb-4">I am Thant Zin Oo</h2>
+            <p class="lead opacity-75">
+                ကျွန်တော်ကတော့ Page Myanmar မှာ Web Engineer Course ကို တက်ရောက်နေပြီး နည်းပညာအသစ်တွေကို စဉ်ဆက်မပြတ် လေ့လာနေသူ တစ်ဦးဖြစ်ပါတယ်။
+            </p>
+            <p class="opacity-75">
+                Module-1 နဲ့ OJT ခရီးလမ်းမှာ Cosmo Seven (Singapore) နဲ့အတူ လက်တွဲလုပ်ဆောင်ခဲ့ပြီး Web Development ရဲ့ အခြေခံကောင်းတွေကို Grade A ဖြင့် ရရှိထားပါတယ်။ ယခုအခါ Mobile App Development နဲ့ OOP သဘောတရားတွေကို အထူးတလည် စိတ်ဝင်စားစွာ လေ့လာနေပါတယ်။
+            </p>
+
+            <div class="row mt-5">
+                <div class="col-6">
+                    <h1 class="fw-bold text-primary mb-0">Grade A</h1>
+                    <p class="small opacity-50">Academic Performance</p>
+                </div>
+                <div class="col-6 border-start ps-4">
+                    <h1 class="fw-bold text-primary mb-0">HSK 5</h1>
+                    <p class="small opacity-50">Language Proficiency</p>
+                </div>
+            </div>
+
+            <div class="mt-5">
+                <a href="{% url 'contact' %}" class="btn btn-primary rounded-pill px-4 py-2 me-2">Let's Talk</a>
+                <a href="{% url 'cv_detail' %}" class="btn btn-outline-secondary rounded-pill px-4 py-2">View Full CV</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .profile-about-img {
+        max-width: 100%;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 20px !important;
+    }
+    .about-img-frame {
+        position: relative;
+        display: inline-block;
+    }
+    .about-img-frame::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: 10px solid var(--primary-color);
+        top: 20px;
+        left: 20px;
+        z-index: -1;
+        border-radius: 20px;
+        opacity: 0.1;
+    }
+</style>
+{% endblock %}

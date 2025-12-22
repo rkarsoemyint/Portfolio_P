@@ -1,0 +1,193 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %}Thant Zin Oo | Portfolio{% endblock %}
+
+{% block content %}
+<style>
+    /* နာမည် Font ကို ပိုလှအောင် လုပ်ခြင်း */
+    .hero-name {
+        font-family: 'Poppins', sans-serif; /* Poppins Font သုံးထားပါတယ် */
+        background: linear-gradient(45deg, #0d6efd, #198754);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 800;
+    }
+
+    /* Skill Section အတွက် Dark Mode Fix */
+    .skill-section {
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    /* Dark Mode ဖြစ်နေချိန်မှာ background နဲ့ စာသားအရောင်ကို ညှိရန် */
+    [data-bs-theme="dark"] .skill-section {
+        background-color: #1e1e1e !important; /* Dark mode background */
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    [data-bs-theme="dark"] .progress {
+        background-color: #333; /* Progress bar နောက်ခံကို အမည်းရောင်ပြောင်း */
+    }
+</style>
+
+<section class="py-5 text-center container" data-aos="fade-down">
+    <div class="row py-lg-5">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="profile-img-container mb-4">
+                <img src="{% static 'images/logo.png' %}" class="profile-img shadow-lg" alt="Thant Zin Oo">
+            </div>
+
+            <h1 class="display-3 mb-3 fw-bold">
+                <span class="hero-name">Thant Zin Oo</span>
+                <span class="fs-4 text-muted fw-light">| Portfolio</span>
+            </h1>
+
+            <h3 class="lead fs-2 mb-4 text-secondary">
+                I am <span id="typed" class="text-success fw-bold"></span>
+            </h3>
+
+            <div class="mb-4 d-flex justify-content-center gap-2 flex-wrap">
+                <a href="{% url 'cv_detail' %}" class="btn btn-outline-success rounded-pill px-4 shadow-sm">
+                    <i class="bi bi-file-earmark-person-fill me-2"></i>View Full CV
+                </a>
+                <a href="#projects" class="btn btn-primary rounded-pill px-4 shadow-sm">
+                    <i class="bi bi-stack me-2"></i>Projects ကြည့်မည်
+                </a>
+                <a href="{% url 'contact' %}" class="btn btn-secondary rounded-pill px-4 shadow-sm">
+                    <i class="bi bi-chat-dots me-2"></i>ဆက်သွယ်ရန်
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 skill-section" id="skills">
+    <div class="container" data-aos="fade-up">
+        <h2 class="text-center mb-5 fw-bold">My Expertise</h2>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <h5 class="mb-4 text-body"><i class="bi bi-code-slash me-2 text-primary"></i>Web Development (Mastered)</h5>
+                <div class="skill-item mb-4">
+                    <div class="d-flex justify-content-between mb-1 text-body">
+                        <span>HTML5 & CSS3</span>
+                        <span class="text-primary fw-bold">95%</span>
+                    </div>
+                    <div class="progress" style="height: 10px;">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 95%" data-aos="fade-right" data-aos-delay="100"></div>
+                    </div>
+                </div>
+                <div class="skill-item mb-4">
+                    <div class="d-flex justify-content-between mb-1 text-body">
+                        <span>PHP & MySQL</span>
+                        <span class="text-primary fw-bold">90%</span>
+                    </div>
+                    <div class="progress" style="height: 10px;">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 90%" data-aos="fade-right" data-aos-delay="200"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <h5 class="mb-4 text-body"><i class="bi bi-stars me-2 text-warning"></i>Current Focus & Languages</h5>
+                <div class="skill-item mb-4">
+                    <div class="d-flex justify-content-between mb-1 text-body">
+                        <span>Python</span>
+                        <span class="text-info fw-bold">85%</span>
+                    </div>
+                    <div class="progress" style="height: 10px;">
+                        <div class="progress-bar bg-info" role="progressbar" style="width: 85%" data-aos="fade-right" data-aos-delay="300"></div>
+                    </div>
+                </div>
+                <div class="skill-item mb-4">
+                    <div class="d-flex justify-content-between mb-1 text-body">
+                        <span>React Native (Learning)</span>
+                        <span class="text-success fw-bold">60%</span>
+                    </div>
+                    <div class="progress" style="height: 10px;">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 60%" data-aos="fade-right" data-aos-delay="400"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container my-5 text-center" data-aos="fade-up">
+    <div class="btn-group" role="group" aria-label="Category filters">
+        <a href="{% url 'index' %}" class="btn btn-outline-primary {% if not selected_category %}active{% endif %}">
+            All Projects
+        </a>
+        {% for value, label in categories %}
+        <a href="{% url 'index' %}?category={{ value }}"
+            class="btn btn-outline-primary {% if selected_category == value %}active{% endif %}">
+            {{ label }}
+        </a>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="album py-5 bg-light" id="projects">
+    <div class="container">
+        {% if query %}
+        <h4 class="mb-4 text-primary">"{{ query }}" အတွက် ရှာဖွေမှုရလဒ်များ -</h4>
+        {% endif %}
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+            {% for project in projects %}
+            <div class="col" data-aos="zoom-in">
+                <div class="card h-100 shadow-sm border-0 project-card">
+                    {% if project.image %}
+                    <img src="{{ project.image.url }}" class="card-img-top" alt="{{ project.title }}"
+                        style="height: 200px; object-fit: cover;">
+                    {% else %}
+                    <img src="{% static 'images/default.jpg' %}" class="card-img-top" alt="Default Image">
+                    {% endif %}
+
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="card-title mb-0 fw-bold">{{ project.title }}</h5>
+                            <span class="badge bg-info text-dark">{{ project.get_category_display }}</span>
+                        </div>
+                        <p class="card-text text-muted small">{{ project.description|truncatewords:12 }}</p>
+                        <p class="small text-secondary mb-0"><strong>Tech:</strong> {{ project.technology }}</p>
+                    </div>
+
+                    <div class="card-footer bg-white border-0 pb-3">
+                        <div class="d-grid gap-2 d-md-block">
+                            <a href="{% url 'project_detail' project.pk %}"
+                                class="btn btn-sm btn-custom-primary px-3">အသေးစိတ်</a>
+                            {% if project.github_link %}
+                            <a href="{{ project.github_link }}" target="_blank"
+                                class="btn btn-sm btn-custom-outline px-3">GitHub</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center py-5">
+                <p class="lead">Project များ မရှိသေးပါခင်ဗျာ။</p>
+                <a href="{% url 'index' %}" class="btn btn-primary rounded-pill px-4">အားလုံးကို ပြန်ပြပါ</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var typed = new Typed('#typed', {
+            strings: [
+                'a Web Engineer.', 
+                'an Aspiring Mobile App Intern.', 
+                'a Passionate Full Stack Learner.'
+            ],
+            typeSpeed: 50,
+            backSpeed: 30,
+            backDelay: 2000,
+            loop: true
+        });
+    });
+</script>
+{% endblock %}

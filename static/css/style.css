@@ -1,0 +1,429 @@
+/* --- Root Variables (Theme Colors) --- */
+:root {
+    --primary-color: #0d6efd;
+    --apple-red: #ff5f56;
+    --apple-yellow: #ffbd2e;
+    --apple-green: #27c93f;
+    --transition-speed: 0.3s;
+}
+
+/* --- Global Styles --- */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+}
+
+/* --- Navbar Styles --- */
+.navbar {
+    background-color: rgba(33, 37, 41, 0.9) !important; /* နည်းနည်းကြည်ကြည်လေး */
+    backdrop-filter: blur(10px); /* နောက်ခံကို ဝေဝေလေးဖြစ်စေတဲ့ Glass Effect */
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar-brand {
+    font-size: 1.4rem;
+    letter-spacing: 0.5px;
+}
+
+/* --- Logo Animation (Thant's < / > code) --- */
+.dot, .dott, .dottt {
+    display: inline-block;
+    font-family: 'Consolas', 'Monaco', monospace; /* Coding font */
+    font-weight: 800;
+    margin: 0 1px;
+    animation: code-blink 1.8s infinite both;
+}
+
+.dot { color: var(--apple-red); }
+.dott { color: var(--apple-yellow); animation-delay: 0.3s; }
+.dottt { color: var(--apple-green); animation-delay: 0.6s; }
+
+@keyframes code-blink {
+    0%, 100% { 
+        opacity: 0.4; 
+        transform: translateY(0); 
+    }
+    50% { 
+        opacity: 1; 
+        transform: translateY(-2px); /* နည်းနည်းလေး ကြွတက်လာတဲ့ effect */
+    }
+}
+
+/* --- Project Cards --- */
+.card {
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* Mouse တင်လိုက်ရင် ကြွတက်လာတဲ့ Effect */
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important;
+}
+
+.card-img-top {
+    transition: transform 0.5s ease;
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.05); /* ပုံလေး နည်းနည်း ကျယ်လာမယ် */
+}
+
+/* --- Buttons --- */
+.btn {
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+}
+
+/* Light Mode Background */
+[data-bs-theme="light"] body {
+    background-color: #f5f8fc /* Soft Gray လေး သုံးကြည့်ပါ */
+    color: #333;
+}
+
+/* Album (Project Section) နောက်ခံကိုလည်း လိုက်ညှိရန် */
+[data-bs-theme="light"] .bg-light {
+    background-color: #f4f7fc !important; /* နည်းနည်းလေး ပိုရင့်တဲ့ ခဲရောင်ဖျော့ */
+}
+
+/* Card တွေကို အဖြူရောင်အတိုင်း ထားခြင်းဖြင့် Background နဲ့ ကြွတက်ပြီး ကွဲထွက်နေပါလိမ့်မယ် */
+[data-bs-theme="light"] .card {
+    background-color: #ebeef4;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+/* --- Dark Mode Enhancements --- */
+[data-bs-theme="dark"] .card {
+    background-color: #2b3035;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+[data-bs-theme="dark"] .navbar {
+    background-color: rgba(20, 20, 20, 0.85) !important;
+}
+
+/* --- Search Bar Focus --- */
+.form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+    border-color: var(--primary-color);
+}
+
+/* --- Footer Social Icons --- */
+footer .bi {
+    font-size: 1.2rem;
+    transition: color 0.2s;
+}
+
+footer .bi-facebook:hover { color: #1877f2; }
+footer .bi-github:hover { color: #6e5494; }
+footer .bi-linkedin:hover { color: #0077b5; }
+
+/* Dark Mode အတွက် Album Background ကို ပြင်ဆင်ခြင်း */
+[data-bs-theme="dark"] .bg-light {
+    background-color: #1a1d20 !important; /* အမည်းရောင်ရင့်ရင့် */
+}
+
+/* Card တွေရဲ့ Footer ကိုလည်း Dark Mode မှာ အရောင်ပြောင်းရန် */
+[data-bs-theme="dark"] .card-footer {
+    background-color: #2b3035 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Hero Section သို့မဟုတ် အခြား အဖြူရောင်ရှိနိုင်သော Section များအတွက် */
+[data-bs-theme="dark"] .container-fluid, 
+[data-bs-theme="dark"] section {
+    color: #f8f9fa;
+}
+
+/* --- Custom Modern Buttons --- */
+.btn-custom-primary {
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 8px;
+    padding: 6px 15px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-custom-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+    color: white;
+}
+
+.btn-custom-outline {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 6px 15px;
+    transition: all 0.3s ease;
+}
+
+[data-bs-theme="dark"] .btn-custom-outline {
+    color: #4da3ff; /* Dark mode မှာ ပိုလင်းတဲ့ အပြာရောင် */
+    border-color: #4da3ff;
+}
+
+.btn-custom-outline:hover {
+    background-color: var(--primary-color);
+    color: white !important;
+    transform: translateY(-2px);
+}
+
+/* GitHub အတွက် သီးသန့် Dark Style */
+.btn-github {
+    background-color: #24292e;
+    color: white;
+    border-radius: 8px;
+}
+
+[data-bs-theme="dark"] .btn-github {
+    background-color: #444c56;
+}
+
+/* --- Contact Card Base Style --- */
+.contact-card {
+    background-color: #e7e9f4; /* Light Mode မှာ အဖြူရောင် */
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* --- Dark Mode အတွက် သီးသန့် ပြင်ဆင်ချက် --- */
+[data-bs-theme="dark"] .contact-card {
+    background-color: #1e1e1e !important; /* Dark Mode မှာ နောက်ခံ အမည်းရောင်ရင့် */
+    border: 1px solid #333;
+}
+
+/* Django Form က ထွက်လာတဲ့ Input တွေကို Style သွင်းခြင်း */
+.contact-card input, 
+.contact-card textarea {
+    border-radius: 8px;
+    padding: 10px;
+    border: 1px solid #e0e5f5;
+    transition: all 0.3s;
+}
+
+[data-bs-theme="dark"] .contact-card input, 
+[data-bs-theme="dark"] .contact-card textarea {
+    background-color: #2b3035 !important;
+    border: 1px solid #444 !important;
+    color: #e9e9f6 !important;
+}
+
+/* Input ကို နှိပ်လိုက်ရင် အပြာရောင် Glow ဖြစ်စေရန် */
+.contact-card input:focus, 
+.contact-card textarea:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15) !important;
+    outline: none;
+}
+
+/* Send Message Button ကို ပိုလှအောင် လုပ်ခြင်း */
+.contact-card .btn-primary {
+    padding: 12px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- Footer Custom Style --- */
+footer {
+    /* Navbar အတိုင်း Glassmorphism ပုံစံပြောင်းခြင်း */
+    background-color: rgba(33, 37, 41, 0.9) !important; 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    transition: background-color 0.3s;
+}
+
+/* Dark Mode မှာ Footer အရောင်ကို ပိုမှောင်စေရန် */
+[data-bs-theme="dark"] footer {
+    background-color: rgba(20, 20, 20, 0.85) !important;
+}
+
+/* Footer ထဲက Link တွေ Mouse တင်ရင် အရောင်ပြောင်းရန် */
+footer a {
+    transition: transform 0.2s, color 0.2s;
+    display: inline-block;
+}
+
+footer a:hover {
+    transform: translateY(-3px);
+    color: var(--primary-color) !important;
+}
+
+/* --- Profile Image Styling (ပြန်လည်ပြင်ဆင်ထားသည်) --- */
+.profile-img-container {
+    display: inline-flex; /* inline-block ထက် ဒါက ပိုတိကျပါတယ် */
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 5px; 
+    background: linear-gradient(45deg, var(--primary-color), var(--apple-green));
+    border-radius: 50% !important; /* အပြင်ဘောင်ပါ ဝိုင်းသွားစေရန် */
+    animation: profile-float 3s ease-in-out infinite;
+}
+
+.profile-img {
+    /* ကွန်ပျူတာမှာပြမယ့် အရွယ်အစား (ပုံမှန်ဆို ၁၄၀-၁၅၀ ဝန်းကျင်က အနေတော်ပါ) */
+    width: 180px !important; 
+    height: 180px !important; 
+    object-fit: cover !important;
+    border-radius: 50% !important; /* ဝိုင်းသွားစေရန် အဓိကအချက် */
+    border: 3px solid #fff !important;
+    display: block; /* အလယ်ဗဟိုကျစေရန် */
+}
+
+/* ဖုန်းနဲ့ကြည့်တဲ့အခါ ပုံက အရမ်းမကြီးနေအောင် ထပ်လျှော့ခြင်း */
+@media (max-width: 576px) {
+    .profile-img {
+        width: 110px;
+        height: 110px;
+    }
+}
+
+[data-bs-theme="dark"] .profile-img {
+    border-color: #212529;
+}
+
+@keyframes profile-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); } /* လှုပ်ရှားမှုကိုလည်း နည်းနည်းလေး ငြိမ်ပေးထားတယ် */
+}
+
+.btn-outline-success {
+    border-width: 2px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-outline-success:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(25, 135, 84, 0.3);
+}
+
+/* CV Main Content styling */
+.cv-main-content {
+    background-color: var(--bs-card-bg);
+    color: var(--bs-body-color);
+}
+
+/* Skill Badges styling */
+.skill-badge {
+    background-color: rgba(13, 110, 253, 0.1);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 8px 15px;
+    font-weight: 500;
+}
+
+/* Dark Mode တွင် Badge များကို ပိုလင်းစေရန် */
+[data-bs-theme="dark"] .skill-badge {
+    background-color: rgba(77, 163, 255, 0.1);
+    color: #4da3ff;
+    border-color: #4da3ff;
+}
+
+/* Sidebar ကပ်နေတဲ့ မျဉ်းကြောင်းကို Dark Mode မှာ ချိန်ညှိရန် */
+[data-bs-theme="dark"] .border-end {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* CV Card တစ်ခုလုံးအတွက် Dark Mode Border */
+[data-bs-theme="dark"] .contact-card {
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.btn-success {
+    background-color: #198754;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+    background-color: #157347;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(25, 135, 84, 0.4) !important;
+}
+
+/* Sidebar ထဲက mt-auto အလုပ်လုပ်စေရန် Sidebar class ကို ပြင်ပါ */
+.col-md-4.bg-dark {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+/* Skill Section Enhancements */
+.progress {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+[data-bs-theme="dark"] .progress {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.skill-item span {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Typing Cursor Style */
+.typed-cursor {
+    color: var(--primary-color);
+}
+
+/* Typing Cursor အရောင်ပြောင်းရန် */
+.typed-cursor {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+/* Hero Section က စာသားတွေ Dark Mode မှာ လင်းနေစေရန် */
+[data-bs-theme="dark"] .text-muted {
+    color: #aab4be !important;
+}
+
+/* Skill Section Theme Adaptation */
+.skill-section {
+    background-color: var(--bs-body-bg); /* Theme ရဲ့ Background အရောင်ကို ယူပါမယ် */
+    color: var(--bs-body-color);         /* Theme ရဲ့ စာသားအရောင်ကို ယူပါမယ် */
+    transition: background-color 0.3s ease;
+}
+
+/* Progress Bar Background ညှိရန် */
+.progress {
+    background-color: rgba(0, 0, 0, 0.1);
+    height: 10px;
+    border-radius: 10px;
+}
+
+/* Dark Mode ဖြစ်နေချိန်တွင် Progress Bar ရဲ့ နောက်ခံကို ပိုလင်းစေရန် */
+[data-bs-theme="dark"] .progress {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Dark Mode မှာ Card တွေနဲ့ Section တွေ ပိုပေါ်လွင်အောင် border လေး ထည့်ပေးပါမယ် */
+[data-bs-theme="dark"] .skill-section {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* GitHub Stats Image Adjustment */
+[data-bs-theme="dark"] .github-stats-container img {
+    filter: invert(0.9) hue-rotate(180deg); /* Dark Mode မှာ အရောင်တွေ ပြောင်းပြန်မဖြစ်အောင် ညှိတာပါ */
+}
+
+/* Isotope Animation Transition */
+.project-item {
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}

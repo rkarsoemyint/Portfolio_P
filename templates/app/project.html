@@ -1,0 +1,63 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %}{{ project.title }} | Details{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-4">
+    <nav aria-label="breadcrumb" data-aos="fade-right">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'index' %}" class="text-decoration-none">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ project.title }}</li>
+        </ol>
+    </nav>
+
+    <div class="row mt-4 g-5">
+        <div class="col-lg-7" data-aos="fade-up">
+            <div class="card border-0 shadow-lg overflow-hidden rounded-4">
+                {% if project.image %}
+                    <img src="{{ project.image.url }}" class="img-fluid w-100" alt="{{ project.title }}">
+                {% else %}
+                    <img src="{% static 'images/default-large.jpg' %}" class="img-fluid w-100" alt="No Image">
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="col-lg-5" data-aos="fade-left">
+            <h1 class="display-5 fw-bold text-primary mb-3">{{ project.title }}</h1>
+            <div class="mb-4">
+                <span class="badge bg-info text-dark px-3 py-2 fs-6 me-2">{{ project.get_category_display }}</span>
+                <span class="text-muted"><i class="bi bi-calendar3"></i> {{ project.created_at|date:"M d, Y" }}</span>
+            </div>
+
+            <h4 class="fw-semibold">Project Overview</h4>
+            <p class="text-secondary lh-lg" style="text-align: justify;">
+                {{ project.description }}
+            </p>
+
+            <hr class="my-4">
+
+            <div class="mb-4">
+                <h5 class="fw-bold">Technologies Used:</h5>
+                <p class="text-muted">{{ project.technology }}</p>
+            </div>
+
+            <div class="d-grid gap-2">
+                {% if project.github_link %}
+                <a href="{{ project.github_link }}" target="_blank" class="btn btn-dark btn-lg rounded-pill shadow">
+                    <i class="bi bi-github"></i> View Source Code
+                </a>
+                {% endif %}
+                
+                <a href="{{ project.vercel_link }}" target="_blank" class="btn btn-outline-secondary btn-lg rounded-pill">
+                    Live Demo  <i class="bi bi-arrow-right"></i>
+                </a>
+                <a href="{% url 'index' %}" class="btn btn-outline-secondary btn-lg rounded-pill">
+                    <i class="bi bi-arrow-left"></i> Back to Portfolio
+                </a>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

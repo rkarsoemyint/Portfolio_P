@@ -1,0 +1,119 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5 py-5" data-aos="zoom-in">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card shadow-lg border-0 contact-card overflow-hidden">
+                <div class="row g-0">
+                    
+                    <div class="col-md-4 bg-dark text-white p-4 d-flex flex-column">
+                        <div class="text-center mb-4">
+                            <img src="{% static 'images/logo.png' %}" class="img-fluid rounded-circle border border-3 border-secondary mb-3 shadow" style="width: 140px; height: 140px; object-fit: cover;">
+                            <h3 class="fw-bold mb-1">THANT ZIN OO</h3>
+                            <p class="small text-info">Mobile App Development Intern</p>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h6 class="text-uppercase fw-bold border-bottom border-secondary pb-2 mb-3">Contact</h6>
+                            <p class="small mb-2"><i class="bi bi-geo-alt me-2 text-info"></i>Dagon Myothit, Yangon</p> 
+                            <p class="small mb-2"><i class="bi bi-telephone me-2 text-info"></i>09 792460282</p>
+                            <p class="small mb-2"><i class="bi bi-envelope me-2 text-info"></i>tzoo2024@gmail.com</p>
+                            <p class="small mb-2"><i class="bi bi-github me-2 text-info"></i>github.com/rkarsoemyint</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <h6 class="text-uppercase fw-bold border-bottom border-secondary pb-2 mb-3">Languages</h6>
+                            <p class="small mb-1">Burmese (Native)</p>
+                            <p class="small mb-1 text-info">Chinese (HSK Level 5)</p>
+                            <p class="small mb-1">English (Intermediate)</p>
+                            <p class="small mb-1">Hindi (Basic)</p>
+                        </div>
+
+                        <div class="mt-auto pt-4 border-top border-secondary text-center">
+                            <a href="{% static 'pdf/Thant_Zin_Oo_CV.pdf' %}" class="btn btn-success w-100 rounded-pill py-2" download>
+                                <i class="bi bi-download me-2"></i>Download PDF
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8 p-5 cv-main-content">
+                        <section class="mb-5">
+                            <h4 class="text-primary fw-bold mb-3"><i class="bi bi-person-fill me-2"></i>CAREER OBJECTIVE</h4>
+                            <p class="opacity-75">
+                                Page Myanmar မှ Web Engineer Course (Module-1 & OJT) အား <strong>Grade A</strong> ဖြင့် အောင်မြင်ထားသူ ဖြစ်ပါသည်။ ယခုအခါ Mobile App Development (React Native JS, Python, Java OOP) နယ်ပယ်တွင် လက်တွေ့အသုံးချရန် Internship အခွင့်အလမ်းကို ရှာဖွေနေပါသည်။
+                            </p>
+                        </section>
+
+                        <section class="mb-5">
+                            <h4 class="text-primary fw-bold mb-3"><i class="bi bi-gear-fill me-2"></i>TECHNICAL SKILLS</h4>
+                            <div class="row">
+                                <div class="col-6 mb-3">
+                                    <h6 class="fw-bold small">Mastered (Module 1)</h6>
+                                    <div class="d-flex flex-wrap gap-1 mt-2">
+                                        <span class="badge skill-badge">HTML5/CSS3</span>
+                                        <span class="badge skill-badge">PHP/MySQL</span>
+                                        <span class="badge skill-badge">Bootstrap</span>
+                                        <span class="badge skill-badge">WordPress</span>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <h6 class="fw-bold small">Currently Learning</h6>
+                                    <div class="d-flex flex-wrap gap-1 mt-2">
+                                        <span class="badge skill-badge-learning">React Native</span>
+                                        <span class="badge skill-badge-learning">Python</span>
+                                        <span class="badge skill-badge-learning">Java OOP</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="mb-5">
+                            <h4 class="text-primary fw-bold mb-3"><i class="bi bi-mortarboard-fill me-2"></i>EDUCATION</h4>
+                            <div class="mb-4 border-start border-primary border-3 ps-3">
+                                <h6 class="fw-bold mb-0">Web Engineer Course</h6>
+                                <p class="small opacity-75 mb-2">Page Myanmar (Yangon,Myanmar) & Cosmo Seven (Singapore) | 2024 - Current</p>
+                                <ul class="small opacity-75 mb-0">
+                                    <li>Module 1 & OJT: Successfully Completed (Grade A)</li>
+                                    <li>Focused on Professional Web Developer Projects</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <div class="text-end">
+                            <a href="{% url 'index' %}" class="btn btn-sm btn-outline-secondary rounded-pill px-4">
+                                <i class="bi bi-arrow-left me-2"></i>Back to Portfolio
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* CV Main Content background that adapts to Light/Dark Mode */
+    .cv-main-content {
+        background-color: var(--bs-card-bg);
+        color: var(--bs-body-color);
+    }
+    .skill-badge {
+        background-color: rgba(13, 110, 253, 0.1);
+        color: var(--primary-color);
+        border: 1px solid var(--primary-color);
+    }
+    .skill-badge-learning {
+        background-color: rgba(25, 135, 84, 0.1);
+        color: #198754;
+        border: 1px solid #198754;
+    }
+    [data-bs-theme="dark"] .skill-badge {
+        background-color: rgba(77, 163, 255, 0.1);
+        color: #4da3ff;
+        border-color: #4da3ff;
+    }
+</style>
+{% endblock %}
