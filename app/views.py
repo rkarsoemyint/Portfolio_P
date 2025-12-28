@@ -2,9 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
 from django.contrib import messages
 from .models import Project, ContactMessage
-from .forms import ContactForm # Form ကို အောက်မှာ ဆက်ရေးပေးပါ့မယ်
+from .forms import ContactForm
 
-# Index Page View (Search + Category Filter ပါဝင်သည်)
 def index(request):
     query = request.GET.get('q')
     category_filter = request.GET.get('category')
@@ -23,7 +22,7 @@ def index(request):
     if category_filter:
         projects = projects.filter(category=category_filter)
 
-    categories = Project.CATEGORY_CHOICES # Button များအတွက် category စာရင်းယူခြင်း
+    categories = Project.CATEGORY_CHOICES
 
     context = {
         'projects': projects,
@@ -43,7 +42,7 @@ def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            form.save() # Database ထဲ သိမ်းလိုက်ခြင်း
+            form.save()
             messages.success(request, 'သင့် Message ပေးပို့မှု အောင်မြင်ပါသည်။ ကျေးဇူးတင်ပါတယ်။')
             return redirect('index')
     else:
