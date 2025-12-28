@@ -5,28 +5,25 @@
 
 {% block content %}
 <style>
-    /* နာမည် Font ကို ပိုလှအောင် လုပ်ခြင်း */
     .hero-name {
-        font-family: 'Poppins', sans-serif; /* Poppins Font သုံးထားပါတယ် */
+        font-family: 'Poppins', sans-serif;
         background: linear-gradient(45deg, #0d6efd, #198754);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         font-weight: 800;
     }
 
-    /* Skill Section အတွက် Dark Mode Fix */
     .skill-section {
         border-bottom: 1px solid rgba(0,0,0,0.05);
     }
     
-    /* Dark Mode ဖြစ်နေချိန်မှာ background နဲ့ စာသားအရောင်ကို ညှိရန် */
     [data-bs-theme="dark"] .skill-section {
-        background-color: #1e1e1e !important; /* Dark mode background */
+        background-color: #1e1e1e !important; 
         border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
     [data-bs-theme="dark"] .progress {
-        background-color: #333; /* Progress bar နောက်ခံကို အမည်းရောင်ပြောင်း */
+        background-color: #333; 
     }
 </style>
 
